@@ -1,0 +1,27 @@
+% !TEX root = ./main.tex
+% Liveness Analysis
+% ======================================================
+\par \noindent 称变量 \texttt{x} 在语句 \texttt{s} 中是活跃的，iff：
+存在使用变量 \texttt{x} 的语句 \texttt{s'} 且
+有一条从 \texttt{s} 到 \texttt{s'} 的路径，该路径中没有对 \texttt{x} 的赋值/定义。
+\par \noindent 称变量 \texttt{x} 在边 E 上是活跃的，iff：$x \in \text{use}(s')$ 且
+有一条经过 E，到 \texttt{s'} 的路径，并且该路径中的所有节点的 $\text{def}()$ 均不包括 \texttt{x}。
+
+\par \noindent 判断变量在某个位置是否活跃：不可判定。保守的近似算法：
+\vspace{-10pt}
+$$
+\begin{array}{rl}
+    \text{in}(n)  &= \text{use}(n) \cup (\text{out}(n) - \text{def}(n)) \\
+    \text{out}(n) &= \bigcup_{s \in \text{succ}(n)} \text{in}(s)
+\end{array}
+$$
+\vspace{-15pt}
+\par \noindent 初始条件：$\text{in}(n) = \varnothing$，$\text{out}(n) = \varnothing$；迭代直到不动点。
+一定收敛的原因：单调有界定理。
+求并集： $\mathcal{O}(N)$，每一次迭代：$\mathcal{O}(N^2)$，至多迭代：$\mathcal{O}(2N^2)$；总复杂度 $\mathcal{O}(N^4)$。
+如果选择合适的顺序，实际运行时间介于 $\mathcal{O}(N)$ 与 $\mathcal{O}(N^2)$。
+
+\par \noindent 优化：倒序，从后往前，对每个节点先计算 out 再计算 in。
+
+\par \noindent 静态活跃性：存在一条控制流路径；动态活跃性：运行时。动态活跃 $\Rightarrow$ 静态活跃。
+静态活跃性是一种保守的近似估计，它认为所有分支都会被执行。上面的算法是一种静态活跃性分析，这体现在第二个式子中。

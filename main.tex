@@ -1,0 +1,105 @@
+% !TEX root = ./main.tex
+\documentclass[UTF8, 10pt]{ctexart}
+\usepackage[
+    a4paper,
+    left=0.5cm,
+    right=0.5cm,
+    top=1.0cm,
+    bottom=1.0cm,
+    columnsep=0.5cm]{geometry}
+\usepackage{amssymb,amsmath, bbm, amsthm, mathrsfs}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage[colorlinks,linkcolor=violet]{hyperref}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{multicol}
+
+\titleformat{\section}
+    {\normalfont\Large\bfseries\filright}
+    {\thesection}
+    {1em}
+    {}
+
+\setlength{\floatsep}{0pt plus 1pt minus 1pt}
+\setlength{\textfloatsep}{0pt plus 1pt minus 1pt}
+\setlength{\intextsep}{0pt plus 1pt minus 1pt}
+\titlespacing*{\section}{0pt}{*0}{*0}
+\titlespacing*{\subsection}{0pt}{*0}{*0}
+
+\newcommand{\textor}{\,\text{or}\,}
+\newcommand{\textand}{\,\text{and}\,}
+\DeclareMathOperator{\nullable}{nullable}
+\DeclareMathOperator{\first}{First}
+\DeclareMathOperator{\follow}{Follow}
+
+\date{}
+\title{编译原理 Compiler Principle}
+
+\begin{document}
+
+\maketitle
+\vspace*{-25mm}
+\begin{multicols}{2}
+% ======================================================
+\section{Lexical Analysis}
+\label{section:lexical-analysis}
+\input{lexical-analysis.tex}
+% ======================================================
+\section{Parsing}
+\label{section:parsing}
+\input{parsing.tex}
+% ======================================================
+\section{Abstract Syntax}
+\label{section:abstract-syntax}
+\input{abstract-syntax.tex}
+% ======================================================
+\section{Semantic Analysis}
+\label{section:semantic-analysis}
+\input{semantic-analysis.tex}
+% ======================================================
+\section{Activation Record}
+\label{section:activation-record}
+\input{activation-record.tex}
+% ======================================================
+\section{Translating into Intermediate Code}
+\label{section:ir}
+\input{ir.tex}
+% ======================================================
+\section{Basic Blocks and Traces}
+\label{section:basic-blocks}
+\input{basic-blocks.tex}
+% ======================================================
+\section{Instruction Selection}
+\label{section:instruction-section}
+\input{instruction-selection.tex}
+% ======================================================
+\section{Liveness Analysis}
+\label{section:liveness-analysis}
+\input{liveness-analysis.tex}
+% ======================================================
+\section{Register Allocation}
+\label{section:register-allocation}
+\input{register-allocation.tex}
+% ======================================================
+\section{Garbage Collection}
+\label{section:garbage-collection}
+\input{garbage-collection.tex}
+% ======================================================
+\section{Object-Oriented Languages}
+\label{section:object-oriented-languages}
+\input{object-oriented-languages.tex}
+% ======================================================
+\section{Loop Optimizations}
+\label{section:loop-optimizations}
+\input{loop-optimizations.tex}
+% ======================================================
+\end{multicols}
+\end{document}
+% ======================================================
+% reference: 浙江大学编译原理课程课件，pyaoaa at zju.edu.cn
+% ======================================================

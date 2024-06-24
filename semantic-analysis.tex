@@ -1,0 +1,15 @@
+% !TEX root = ./main.tex
+% Semantic Analysis
+% ======================================================
+\par \noindent 语义分析：引用的维度是否与声明匹配、数组访问是否越界、变量应该存储在哪里\dots（这些问题取决于值而不是语法）
+\par \noindent 狭义语义分析：通过 AST 确定程序的一些静态属性，例如名称的范围和可见性（每个变量在使用前都已声明）、
+变量、函数和表达式的类型（每个表达式都有适当的类型、函数调用符合定义）。
+
+\par \noindent 符号表：环境的实现；环境：绑定的集合；绑定：$\text{Name/Symbol} \mapsto \text{Meaning/Attribute}$；属性：类型、值、函数签名等。
+环境：$\sigma_1 = \sigma_0 + \{a \mapsto \text{int}, b \mapsto \text{int}, c \mapsto \text{int}\}$，
+$\sigma_2 = \sigma_1 + \{a \mapsto \text{str}\}$，等式右侧的符号表将覆盖左侧的符号表（现在 $a \mapsto \text{str}$）。
+
+\par \noindent 符号表的实现：Imperative（例：bucket list / hash table）使用哈希查找对应标识符在表中的位置（bucket），
+插入新环境时，在对应标识符 bucket 顶部插入新绑定，恢复环境时，从对应 bucket pop 绑定。
+Functional（例：persistent BST）使用可持久化维护数据结构的历史，退出 scope 时回到相应的历史状态，
+插入新环境时只复制标识符在树中的所有祖先（避免完整拷贝所有旧版本）。
