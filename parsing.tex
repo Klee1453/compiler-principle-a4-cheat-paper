@@ -95,6 +95,9 @@ LL(1) 文法是无二义的、无左递归的（不存在 $A \rightarrow^* A\alp
     \includegraphics[width=0.48\linewidth]{figures/lr0-4.png}
 \end{figure}
 
+\par \noindent 语法分析表的使用：维护状态栈、符号栈和输入列表。根据输入流头部选择 Action（shift/reduce） 或根据符号栈顶的非终结符选择 GOTO（优先）。
+reduce 时，从状态栈 pop 出等同于产生式右部元素数量的状态；GOTO 和 shift 时 push 对应的状态到栈上。
+
 \par \noindent LR(0) 是否归约、选择哪个产生式规约仅由栈顶状态决定，对于每一个项 $X \rightarrow \alpha \bullet$ 盲目选择规约，可能导致 shift-reduce 冲突。
 
 \par \noindent 使用更加严格的归约条件以降低冲突的可能性。规约条件更加严格 $\Rightarrow$ 语法分析表有更小的可能冲突 $\Rightarrow$ 识别更多文法。
